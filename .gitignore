@@ -10,3 +10,6 @@ node_modules/
 #
 *.log
 
+# Session files
+#
+screenshots/session/

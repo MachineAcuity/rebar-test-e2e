@@ -5,6 +5,7 @@ const {
   typeInTextFieldByLabel,
   clickButtonByLabel,
 } = require('../lib/action-shortcuts')
+const screenshot = require('../lib/screenshot')
 
 describe(
   'Log in',
@@ -31,9 +32,7 @@ describe(
       ).toBe(
         'The Rebar is and open source project representing basic foundation of the solutions we provide. It fully utilizes the react stack, and Node.js and Cassandra on the back end. It can be used both as boilerplate, as well as an educational tool with multiple examples available. Basic user account management including account creation, password strength indicator and user profile is also included. The boilerplate is optimized for supportability and update-ability. It allows us to update the multiple projects based on the boilerplate with minimum effort, providing new features, improvements and bug fixes. This is achieved through the following two approaches:',
       )
-      await page.screenshot({
-        path: 'screenshot/user-management/log-in/home-page.png',
-      })
+      await screenshot(page, 'user-management/log-in/home-page.png')
     })
 
     test('Click burger and open menu', async () => {
@@ -44,9 +43,7 @@ describe(
       })
 
       await page.waitForXPath('//h6[text()="Machine Acuity\'s Rebar"]')
-      await page.screenshot({
-        path: 'screenshot/user-management/log-in/home-page-open-menu.png',
-      })
+      await screenshot(page, 'user-management/log-in/home-page-open-menu.png')
     })
 
     test('Click log in', async () => {
@@ -55,9 +52,7 @@ describe(
       await clickButtonByLabel(page, 'Log In')
 
       await page.waitForXPath('//h2[text()="Log In"]')
-      await page.screenshot({
-        path: 'screenshot/user-management/log-in/home-page-log-in.png',
-      })
+      await screenshot(page, 'user-management/log-in/home-page-log-in.png')
     })
 
     test('Type user name and password', async () => {
@@ -66,10 +61,10 @@ describe(
       await typeInTextFieldByLabel(page, 'E-Mail Address', 'my email')
       await typeInTextFieldByLabel(page, 'Password', 'a big secret here')
 
-      await page.screenshot({
-        path:
-          'screenshot/user-management/log-in/home-page-log-in-with-credentials.png',
-      })
+      await screenshot(
+        page,
+        'user-management/log-in/home-page-log-in-with-credentials.png',
+      )
 
       // Press button
 
