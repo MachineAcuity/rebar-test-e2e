@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"[javascript]": {
+			"editor.formatOnSave": true
+		},
+		"[javascriptreact]": {
+			"editor.formatOnSave": true
+		},
+		"prettier.arrowParens": true,
+		"prettier.bracesSpacing": true,
+		"prettier.bracketSpacing": true,
+		"prettier.eslintIntegration": true,
+		"prettier.parser": "flow",
+		"prettier.printWidth": 80,
+		"prettier.semi": false,
+		"prettier.singleQuote": true,
+		"prettier.tabWidth": 2,
+		"prettier.trailingComma": "all",
+		"prettier.useTabs": false,
+		"files.exclude": {
+			"node_modules/**":true,
+			"**/.vscode/**":true
+		},
+		"vscode-language-todo.globs": [
+			"!**/node_modules/**",
+			"!**/.vscode/**",
+			"!**/.git/**"
+		]
+	}
+}

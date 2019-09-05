@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "devDependencies": {
+    "chalk": "2.4.2",
+    "jest": "25.0.0",
+    "pixelmatch": "5.0.2",
+    "prettier": "1.18.2",
+    "puppeteer": "1.19.0",
+    "rimraf": "3.0.0"
+  }
+}
