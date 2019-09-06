@@ -7,10 +7,20 @@ async function clickIconButtonByPath(page, { iconPathD }) {
   await element.click()
 }
 
-async function typeInTextFieldByLabel(page, label, value) {
+async function typeInTextFieldByLabel(page, { label, value, clear }) {
+  if (!label) throw new Error('label expected')
+  if (!value) throw new Error('value expected')
+
   const xPath = '//label[text()="' + label + '"]/..//input'
 
   const element = await page.waitForXPath(xPath)
+
+  if (clear) {
+    await element.click()
+    await element.focus()
+    await element.click({ clickCount: 3 })
+    await element.press('Backspace')
+  }
 
   await element.type(value, 10)
 }
