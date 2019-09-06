@@ -25,8 +25,18 @@ async function typeInTextFieldByLabel(page, { label, value, clear }) {
   await element.type(value, 10)
 }
 
-async function clickButtonByLabel(page, label) {
-  const xPath = '//span[text()="' + label + '"]/parent::button'
+async function clickButtonByLabel(page, { label, order }) {
+  const xPath = order
+    ? '(//span[text()="' + label + '"]/parent::button)[' + order + ']'
+    : '//span[text()="' + label + '"]/parent::button'
+
+  const element = await page.waitForXPath(xPath)
+
+  await element.click()
+}
+
+async function clickListButtonByLabel(page, { label }) {
+  const xPath = '//span[text()="' + label + '"]/parent::div/parent::div'
 
   const element = await page.waitForXPath(xPath)
 
@@ -37,4 +47,5 @@ module.exports = {
   clickIconButtonByPath,
   typeInTextFieldByLabel,
   clickButtonByLabel,
+  clickListButtonByLabel,
 }

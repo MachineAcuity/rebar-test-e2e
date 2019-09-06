@@ -68,7 +68,7 @@ describe(
       async () => {
         //
 
-        await clickButtonByLabel(page, 'Log In')
+        await clickButtonByLabel(page, {label:'Log In'})
 
         await page.waitForXPath('//h2[text()="Log In"]')
 
@@ -85,7 +85,7 @@ describe(
       async () => {
         //
 
-        await clickButtonByLabel(page, 'New User')
+        await clickButtonByLabel(page, {label:'New User'})
 
         await page.waitForXPath('//div[text()="Create new user"]')
 
