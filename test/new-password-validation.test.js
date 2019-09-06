@@ -166,6 +166,74 @@ describe(
       },
       timeout_quick,
     )
+
+    test(
+      '070 Matching, longer passwords',
+      async () => {
+        //
+
+        await typeInTextFieldByLabel(page, {
+          label: 'Password',
+          value: 'a1b2c3d4e#',
+          clear: true,
+        })
+        await typeInTextFieldByLabel(page, {
+          label: 'Confirm password',
+          value: 'a1b2c3d4e#',
+          clear: true,
+        })
+
+        // Wait for password quality slider animation
+        await page.waitFor(500)
+
+        await screenshot(
+          page,
+          'user-management/new-password-validation/070-longer-password.png',
+        )
+
+        const message = await page.waitForXPath(
+          '//*[@id="root"]/div/div/main/div/div/div[2]/div[1]/div[2]/h6',
+        )
+        expect(
+          (await message.getProperty('textContent'))._remoteObject.value,
+        ).toBe('Password strength: fair')
+      },
+      timeout_quick,
+    )
+
+    test(
+      '080 Matching, good passwords',
+      async () => {
+        //
+
+        await typeInTextFieldByLabel(page, {
+          label: 'Password',
+          value: 'a1b2c3d4e#@(HJaERn1',
+          clear: true,
+        })
+        await typeInTextFieldByLabel(page, {
+          label: 'Confirm password',
+          value: 'a1b2c3d4e#@(HJaERn1',
+          clear: true,
+        })
+
+        // Wait for password quality slider animation
+        await page.waitFor(500)
+
+        await screenshot(
+          page,
+          'user-management/new-password-validation/080-good-password.png',
+        )
+
+        const message = await page.waitForXPath(
+          '//*[@id="root"]/div/div/main/div/div/div[2]/div[1]/div[2]/h6',
+        )
+        expect(
+          (await message.getProperty('textContent'))._remoteObject.value,
+        ).toBe('Password strength: good')
+      },
+      timeout_quick,
+    )
   },
   timeout,
 )
